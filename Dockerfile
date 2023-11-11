@@ -5,8 +5,9 @@ FROM php:8.2-apache
 RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf
 
 # Install additional PHP extensions
-RUN docker-php-ext-install mysqli pdo pdo_mysql opcache intl json gd mbstring xml xmlreader xmlwriter xsl zip bz2 exif gettext iconv curl imap pgsql simplexml tidy
+RUN docker-php-ext-install mysqli pdo pdo_mysql opcache intl
 
+# json gd mbstring xml xmlreader xmlwriter xsl zip bz2 exif gettext iconv curl imap pgsql simplexml tidy
 
 # Enable Apache modules
 RUN a2enmod rewrite
