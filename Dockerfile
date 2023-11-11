@@ -1,11 +1,12 @@
 # Use an official Apache runtime as a parent image
-FROM php:7.4-alpine
+FROM php:8.2-apache
 
 # Install additional PHP extensions
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 # Enable Apache modules
 RUN a2enmod rewrite
+RUN a2enmod headers
 
 # Set the working directory to /var/www/html
 WORKDIR /var/www/html
