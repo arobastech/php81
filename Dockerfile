@@ -50,4 +50,4 @@ EXPOSE 80
 CMD ["apache2-foreground"]
 
 # Clean up unnecessary files
-RUN rm -f Dockerfile
+RUN rm -f /var/www/html/Dockerfile
