@@ -2,7 +2,7 @@
 FROM php:8.2-apache
 
 # Install some dependencies
-RUN apt update && apt install -y libicu-dev libz-dev libgd-dev libxslt1-dev libzip-dev libbz2-dev
+RUN apt update && apt install -y libicu-dev libz-dev libgd-dev libxslt1-dev libzip-dev libbz2-dev libcurl4
 
 # Install the memcache extension
 # RUN pecl install memcache && docker-php-ext-enable memcache
@@ -11,7 +11,7 @@ RUN apt update && apt install -y libicu-dev libz-dev libgd-dev libxslt1-dev libz
 # RUN pecl install redis && docker-php-ext-enable redis
 
 # Install additional PHP extensions
-RUN docker-php-ext-install mysqli pdo pdo_mysql opcache intl gd xsl zip bz2
+RUN docker-php-ext-install mysqli pdo pdo_mysql opcache intl gd xsl zip bz2 exif gettext iconv curl imap pgsql tidy
 
 # intl json gd mbstring xml xmlreader xmlwriter xsl zip bz2
 
