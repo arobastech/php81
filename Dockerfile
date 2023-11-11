@@ -1,9 +1,6 @@
 # Use an official Apache runtime as a parent image
 FROM php:8.2-apache
 
-# Set DNS nameserver
-RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf
-
 # Install additional PHP extensions
 RUN docker-php-ext-install mysqli pdo pdo_mysql opcache intl
 
