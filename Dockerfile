@@ -11,7 +11,7 @@ RUN apt update && apt install -y libicu-dev libz-dev libgd-dev
 # RUN pecl install redis && docker-php-ext-enable redis
 
 # Install additional PHP extensions
-RUN docker-php-ext-install mysqli pdo pdo_mysql opcache intl gd
+RUN docker-php-ext-install mysqli pdo pdo_mysql opcache intl gd xsl zip bz2
 
 # intl json gd mbstring xml xmlreader xmlwriter xsl zip bz2
 
