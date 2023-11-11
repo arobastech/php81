@@ -2,7 +2,15 @@
 FROM php:8.2-apache
 
 # Install some dependencies
-RUN apt update && apt install -y libicu-dev libz-dev libgd-dev libxslt1-dev libzip-dev libbz2-dev libcurl4-openssl-dev libc-client-dev
+RUN apt update && apt install -y libicu-dev \
+  libz-dev \
+  libgd-dev \
+  libxslt1-dev \
+  libzip-dev \
+  libbz2-dev \
+  libcurl4-openssl-dev \
+  libc-client-dev \
+  libkrb5-dev
 
 # Install the memcache extension
 # RUN pecl install memcache && docker-php-ext-enable memcache
