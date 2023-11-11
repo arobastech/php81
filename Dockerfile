@@ -1,15 +1,11 @@
-# Use an official Apache runtime as a parent image
-FROM php:8.2-apache
-
-# Install some dependencies
-RUN apt update && apt install -y libicu-dev gcc g++ autoconf
+# Use an official PHP with Apache image based on Alpine Linux
+FROM php:8.2.10-apache-alpine
 
 # Install necessary build dependencies
-RUN apt-get update && apt-get install -y \
-    libmemcached-dev \
-    libz-dev \
-    libpq-dev \
-    && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache \
+    $PHPIZE_DEPS \
+    zlib-dev \
+    libmemcached-dev
 
 # Install the memcache extension
 RUN pecl install memcache && docker-php-ext-enable memcache
@@ -18,13 +14,10 @@ RUN pecl install memcache && docker-php-ext-enable memcache
 RUN pecl install redis && docker-php-ext-enable redis
 
 # Install additional PHP extensions
-RUN docker-php-ext-install mysqli pdo pdo_mysql opcache intl json gd mbstring xml xmlreader xmlwriter xsl zip bz2
-
-# json gd mbstring xml xmlreader xmlwriter xsl zip bz2 exif gettext iconv curl imap pgsql simplexml tidy
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 # Enable Apache modules
 RUN a2enmod rewrite
-RUN a2enmod headers
 
 # Set the working directory to /var/www/html
 WORKDIR /var/www/html
@@ -32,11 +25,11 @@ WORKDIR /var/www/html
 # Copy the current directory contents into the container at /var/www/html
 COPY . /var/www/html
 
-# Create a volume for web files
+# Create a volume for web files (optional, depending on your use case)
 VOLUME /var/www/html
 
 # Expose port 80 for Apache
 EXPOSE 80
 
 # Start Apache when the container launches
-CMD ["apache2-foreground"]
+CMD ["httpd", "-D", "FOREGROUND"]
