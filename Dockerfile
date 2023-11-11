@@ -5,7 +5,7 @@ FROM php:8.2-apache
 RUN apt update && apt install -y libicu-dev gcc g++ autoconf
 
 # Install necessary build dependencies
-RUN apt install -y zlib-dev libmemcached-dev
+RUN apt install -y zlib1g-dev libmemcached-dev
 
 # Install the memcache extension
 RUN pecl install memcache && docker-php-ext-enable memcache
