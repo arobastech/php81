@@ -11,7 +11,8 @@ RUN apt update && apt install -y libicu-dev \
   libcurl4-openssl-dev \
   libc-client-dev \
   libkrb5-dev \
-  libpq-dev
+  libpq-dev \
+  libtidy-dev
 
 # Install the memcache extension
 # RUN pecl install memcache && docker-php-ext-enable memcache
