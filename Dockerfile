@@ -1,6 +1,9 @@
 # Use an official Apache runtime as a parent image
 FROM php:8.2-apache
 
+# Install some dependencies
+RUN apt update && apt install -y libicu-dev
+
 # Install additional PHP extensions
 RUN docker-php-ext-install mysqli pdo pdo_mysql opcache intl
 
