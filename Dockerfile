@@ -2,7 +2,7 @@
 FROM php:8.2-apache
 
 # Install some dependencies
-RUN apt update && apt install -y libicu-dev
+RUN apt update && apt install -y libicu-dev gcc c++ autoconf
 
 # Install necessary build dependencies
 RUN apt install -y zlib-dev libmemcached-dev
