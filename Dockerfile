@@ -2,7 +2,8 @@
 FROM php:8.2-apache
 
 # Install additional PHP extensions
-RUN docker-php-ext-install mysqli pdo pdo_mysql opcache intl gd mbstring mysqlnd redis memcache memcached
+RUN docker-php-ext-install mysqli pdo pdo_mysql opcache intl json gd mbstring xml xmlreader xmlwriter xsl zip bz2 exif gettext iconv curl imap pgsql simplexml tidy
+
 
 # Enable Apache modules
 RUN a2enmod rewrite
