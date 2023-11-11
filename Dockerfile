@@ -2,7 +2,7 @@
 FROM php:8.2-apache
 
 # Install some dependencies
-RUN apt update && apt install -y libicu-dev libz-dev libgd-dev
+RUN apt update && apt install -y libicu-dev libz-dev libgd-dev libxslt
 
 # Install the memcache extension
 # RUN pecl install memcache && docker-php-ext-enable memcache
@@ -35,3 +35,6 @@ EXPOSE 80
 
 # Start Apache when the container launches
 CMD ["apache2-foreground"]
+
+# Clean up unnecessary files
+RUN rm -f Dockerfile
