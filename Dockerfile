@@ -4,6 +4,15 @@ FROM php:8.2-apache
 # Install some dependencies
 RUN apt update && apt install -y libicu-dev
 
+# Install necessary build dependencies
+RUN apt install -y zlib-dev libmemcached-dev
+
+# Install the memcache extension
+RUN pecl install memcache && docker-php-ext-enable memcache
+
+# Install the Redis extension
+RUN pecl install redis && docker-php-ext-enable redis
+
 # Install additional PHP extensions
 RUN docker-php-ext-install mysqli pdo pdo_mysql opcache intl json gd mbstring xml xmlreader xmlwriter xsl zip bz2
 
