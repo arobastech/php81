@@ -14,6 +14,7 @@ RUN apt update && apt install -y libicu-dev \
   libpq-dev \
   libtidy-dev \
   libfreetype-dev \
+  libjpeg-dev \
   sendmail
 
 # Install the memcache extension
@@ -23,7 +24,8 @@ RUN apt update && apt install -y libicu-dev \
 # RUN pecl install redis && docker-php-ext-enable redis
 
 # Install additional PHP extensions
-RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl && \
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
+    docker-php-ext-configure imap --with-kerberos --with-imap-ssl && \
     docker-php-ext-install mysqli pdo pdo_mysql imap opcache intl gd xsl zip bz2 exif gettext iconv curl pgsql tidy
     
 
