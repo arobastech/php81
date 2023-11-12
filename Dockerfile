@@ -13,6 +13,7 @@ RUN apt update && apt install -y libicu-dev \
   libkrb5-dev \
   libpq-dev \
   libtidy-dev \
+  libfreetype-dev \
   sendmail
 
 # Install the memcache extension
